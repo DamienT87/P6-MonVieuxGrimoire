@@ -9,8 +9,12 @@ mongoose.connect(process.env.MONGO_URI)
 const express = require('express');
 const app = express();
 
+const authRoutes = require('./routes/auth.routes');
+
 //Parssage du JSON
 app.use(express.json());
+
+app.use('/api/auth', authRoutes)
 
 app.get('/', (req, res) => {
   res.send('API Mon Vieux Grimoire - OK ✔️');
